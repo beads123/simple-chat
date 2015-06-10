@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Chat</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="Author" content="myzhibie"/>
+    <link rel="stylesheet" href="cssmin/style.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+
+</head>
+<body>
+<!--登陆页面-->
+<div class="panel home" id="login">
+    <h1 class="home_h1"><span class="home_logo"></span>Simple Chat</h1>
+    <h2 class="home_h2">账号密码登陆</h2>
+    <p class="errormessage" id="loginmessage"></p>
+    <form class="home_form">
+        <input type="text" id="username" placeholder="用户名"/>
+        <input type="password" id="password" placeholder="密码"/>
+        <input type="button" id="loginBtn" value="登录" class="home_login"/>
+    </form>
+    <p class="register_p">还没有账户？赶紧去<a id="register_a">注册</a></p>
+    <footer class="home_footer">Copyright © 2015 <a href="http://myzhibie.coding.io" target="_blank">myzhibie</a></footer>
+</div>
+<!--注册页面-->
+<div class="panel register hidden" id="register">
+
+    <header class="register_header hidden" id="backHeader"><span class="backbutton"><i class="fa fa-chevron-left"></i>返回</span></header>
+    <h1 class="register_h1"><span class="register_logo"></span>用户注册</h1>
+    <p class="errormessage" id="registermessage"></p>
+    <form class="home_form" id="registerForm">
+        <input type="text" id="uname_re" placeholder="用户名"/>
+        <input type="password" id="passwd_re" placeholder="密码"/>
+        <input type="password" id="passwd_confirm" placeholder="重复密码"/>
+        <input type="button" id="registerBtn" value="注册" class="home_login"/>
+    </form>
+    <footer class="home_footer">Copyright © 2015 <a href="http://myzhibie.coding.io" target="_blank">myzhibie</a></footer>
+</div>
+<!--用户界面-->
+<div class="panel main hidden" id="user_div">
+
+    <h1 class="logo"><img src="img/head.png" alt="logo"/><span class="logo_uname" id="logo_uname">myzhibie</span> </h1>
+    <div class="chat_panel" id="chat_panel">
+        <header class="mainheader" id="tab_head">会话</header>
+        <ul class="user_ul" id="user_panel">
+        <li class="description"><i class="fa fa-fire"></i>暂无对话...</li>
+        </ul>
+        <ul class="user_ul hidden" id="contacts">
+            联系人
+        </ul>
+        <ul class="user_ul hidden" id="settings">
+            <p class="user_setting_info">
+            <img src="img/bird.png" alt="logo" class="setting_img"/><span class="setting_uname" id="setting_uname">myzhibie</span>
+            </p>
+            <input type="button" value="退出登录" class="logoutbtn" id="logoutbtn" />
+        </ul>
+        <footer class="mainfooter">
+            <ul class="footer_ul" id="item_ul">
+                <li class="item_active"  ><span class="tab_item"><i class="font-adjust fa fa-comments "></i><br/> 会话</span><span class="hidden"></span></li>
+                <li><span class="tab_item"><i class="font-adjust fa fa-user"></i><br/> 联系人</span><span class="hidden"></span></li>
+                <li><span class="tab_item"><i class="fa fa-cog font-adjust"></i><br/> 设置</span><span class="hidden"></span></li>
+            </ul>
+        </footer>
+    </div>
+    <div class="talk_panel invisible" id="talk_panel">
+        <header class="talk_header" id="talkheader">
+            <span id="user_des"></span>
+            <span class="close_btn" id="close_btn"><i class="fa fa-times"></i></span>
+        </header>
+        <div class="talk_content" id="talk_content">
+            <!--<div class="wrappersend"><p class="send">1111122222222222222222222222222211111222222222222222222222222222 我来了 我来了 我来了 我来了</p><span class="sender">myzhibie</span></div>-->
+            <!--<div class="wrapperreceive"><span class="receiver">myzhibie</span><p class="receive">1111122222222222222222222222222211111222222222222222222222222222 我来了 我来了 我来了 我来了</p></div>-->
+        </div>
+
+        <footer class="talk_footer" id="talk_footer">
+            <i class="fa fa-smile-o express_signal" ontouchstart="toggleFaceRegion();" id="showEmotion"></i>
+            <input type="text" placeholder="输入对话内容..." class="content_input"/>
+            <input type="button" value="发送" class="send_btn" id="send_btn" ontouchstart="sendMessage();">
+        </footer>
+        <ul class="face_ul hidden" id="face_ul">
+            <li class="face_li">
+               <span><i class="sp-anger"></i></span>
+                <span><i class="sp-confuse"></i></span>
+               <span><i class="sp-cool"></i></span>
+               <span><i class="sp-cry"></i></span>
+            </li>
+            <li class="face_li">
+                <span><i class="sp-jiong"></i></span>
+                <span><i class="sp-laugh"></i></span>
+                <span><i class="sp-se"></i></span>
+                <span><i class="sp-shutup"></i></span>
+            </li>
+            <li class="face_li">
+                <span><i class="sp-shy"></i></span>
+                <span><i class="sp-smile"></i></span>
+                <span><i class="sp-sweat"></i></span>
+                <span><i class="sp-worship"></i></span>
+            </li>
+        </ul>
+
+    </div>
+    <div class="talk_panel invisible" id="search_panel">
+        <header class="search_header" >
+            <span class="search_back"><i class="fa fa-chevron-left"></i>联系人</span>
+            搜索
+        </header>
+        <div class="search_content">
+            <p class="search_region">
+                <input type="text" id="search_input" placeholder="搜索">
+            </p>
+            <ul class="search_ul" id="search_ul">
+
+            </ul>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/socket.io-client/socket.io.js"></script>
+<script src="jsmin/loader.js" data-main="../jsmin/main"></script>
+</body>
+</html>
