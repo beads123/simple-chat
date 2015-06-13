@@ -14,5 +14,9 @@ This webapp is written by raw javascript without any frameworks. Related technol
   `cd webimapp`
   
   `npm start`
-- then you can visit it in [localhost:3000](http://localhost:3000)   
+- then you can visit it in [localhost:3000](http://localhost:3000)  
+
+##Note
+so far you can visit the [preview](http://simchat-my.coding.io) to launch this webapp.You can register you account,go login action but send and receive messages.This is because this webapp is deployed in [coding.net](http://coding.net) which does not support socket.io.Fortunately,you can run this webapp in your own server and vps like the following.
+![screenshot](http://img-storage.qiniudn.com/15-6-13/74030231.jpg)
 
